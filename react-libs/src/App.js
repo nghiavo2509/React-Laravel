@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
 import './assets/admin/css/sb-admin-2.css';
 import './assets/admin/vendor/fontawesome-free/css/all.min.css';
@@ -35,9 +36,13 @@ import { Loading } from './layouts/inc/Loading';
 import { Borrow } from './Components/Borrow/Borrow';
 import { AddBorrow } from './Components/Borrow/AddBorrow';
 import { EditBorrow } from './Components/Borrow/EditBorrow';
+import { Home } from './Components/Home';
+import ProtectedRoutes from './ProtectedRoutes';
+
+
+// export const UserContext = createContext();
 
 function App() {
-
 	axios.defaults.baseURL = 'http://localhost:8000/'; // laravel
 	axios.defaults.headers.post['Content-Type'] = 'application/json';
 	axios.defaults.headers.post['Accept'] = 'application/json';
@@ -53,55 +58,61 @@ function App() {
 	});
 
 	const isAuthenticated = localStorage.getItem("auth_token");
+	console.log(isAuthenticated);
 	return (
 		<div className="App">
 			<Router>
 				<Routes>
-					<Route path="/login" element={isAuthenticated ? <Navigate to={`/`} /> : <Login />} exact />
+					<Route path="/login" element={isAuthenticated ? <Navigate to={`/admin`} /> : <Login />} />
 
-					<Route path="/register" element={isAuthenticated ? <Navigate to='/' /> : <Register />} />
+					<Route path="/register" element={isAuthenticated ? <Navigate to='/admin' /> : <Register />} />
 
-					<Route path='/' element={isAuthenticated ? <MasterLayout /> : <Navigate to={`/login`} />} >
+					<Route exact path='/' element={<Home />} />
+					<Route element={<ProtectedRoutes />}>
+						{/* <Route path='/admin' element={isAuthenticated ? <MasterLayout /> : <Navigate to={`/login`} />} > */}
+						<Route path='/admin' element={<MasterLayout />} >
 
-						{/* Category  */}
-						<Route path="category" element={<Category />} />
-						<Route path="category/:categoryId" element={<EditCategory />} />
-						<Route path="category/create" element={<AddCategory />} />
+							{/* Category  */}
+							<Route path="category" element={<Category />} />
+							<Route path="category/:categoryId" element={<EditCategory />} />
+							<Route path="category/create" element={<AddCategory />} />
 
-						{/* Genre  */}
-						<Route path="category/items/:categoryId" element={<Index />}  >
-							<Route path="" element={<Genre />} />
-							<Route path="create" element={<AddGenre />} />
-							<Route path="edit/:genreId" element={<EditGenre />} />
+							{/* Genre  */}
+							<Route path="category/items/:categoryId" element={<Index />}  >
+								<Route path="" element={<Genre />} />
+								<Route path="create" element={<AddGenre />} />
+								<Route path="edit/:genreId" element={<EditGenre />} />
+							</Route>
+
+
+							{/* User */}
+							<Route path="user" element={<IndexUser />} >
+								<Route path='staff' element={<Staff />} />
+								<Route path='student' element={<Student />} />
+							</Route>
+
+							{/* Product */}
+							<Route path='product' element={<IndexProduct />}>
+								<Route path='' element={<Product />}> </Route>
+								<Route path='create' element={<AddProduct />}> </Route>
+								<Route path='edit/:productId' element={<EditProduct />}> </Route>
+							</Route>
+
+							{/* Borrow Books */}
+							<Route path='manage-borrow' element={<IndexBorrow />}>
+								<Route path='' element={<Borrow />} />
+								<Route path='create' element={<AddBorrow />} />
+								<Route path='edit/:borrowId' element={<EditBorrow />} />
+
+							</Route>
+
+
 						</Route>
-
-
-						{/* User */}
-						<Route path="user" element={<IndexUser />} >
-							<Route path='staff' element={<Staff />} />
-							<Route path='student' element={<Student />} />
-						</Route>
-
-						{/* Product */}
-						<Route path='product' element={<IndexProduct />}>
-							<Route path='' element={<Product />}> </Route>
-							<Route path='create' element={<AddProduct />}> </Route>
-							<Route path='edit/:productId' element={<EditProduct />}> </Route>
-						</Route>
-
-						{/* Borrow Books */}
-						<Route path='manage-borrow' element={<IndexBorrow />}>
-							<Route path='' element={<Borrow />} />
-							<Route path='create' element={<AddBorrow />} />
-							<Route path='edit/:borrowId' element={<EditBorrow />} />
-
-						</Route>
-
-						<Route path="*" element={<NotFound />} />
-						<Route path="loading" element={<Loading />} />
-
 					</Route>
 
+
+					<Route path="*" element={<NotFound />} />
+					<Route path="loading" element={<Loading />} />
 				</Routes>
 
 			</Router>

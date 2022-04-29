@@ -2,13 +2,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
-const Navbar = (props) => {
-
+const Navbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+
         axios.post(`http://localhost/Laravel_/larareact/laravel/api/user/logout`)
             .then(response => {
+
                 localStorage.removeItem('auth_token');
                 localStorage.removeItem('auth_username');
                 swal({
@@ -17,7 +18,8 @@ const Navbar = (props) => {
                     icon: "success",
                     button: "OK!",
                 });
-                return navigate('/login');
+                navigate('/login');
+
             })
             .catch(error => {
                 console.log(error.response);

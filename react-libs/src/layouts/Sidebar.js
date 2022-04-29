@@ -12,7 +12,7 @@ const Sidebar = () => {
             </a> */}
             <hr className="sidebar-divider my-0" />
             <li className="nav-item active">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/admin">
                     <i className="fas fa-fw fa-tachometer-alt" />
                     <span>Dashboard</span>
                 </Link>
@@ -30,8 +30,8 @@ const Sidebar = () => {
                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div className="bg-white py-2 collapse-inner rounded">
                         <h6 className="collapse-header"> Custom Libraries:</h6>
-                        <NavLink className="collapse-item" to={"/category"}> Category</NavLink>
-                        <NavLink className="collapse-item" to={"/product"}> Product</NavLink>
+                        <NavLink className="collapse-item" to={"category"}> Category</NavLink>
+                        <NavLink className="collapse-item" to={"product"}> Product</NavLink>
 
                     </div>
 
@@ -45,7 +45,7 @@ const Sidebar = () => {
                 <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div className="bg-white py-2 collapse-inner rounded">
                         <h6 className="collapse-header"> Users:</h6>
-                        <NavLink className="collapse-item" to={`/user/staff`}> Nhân viên</NavLink>
+                        <NavLink className="collapse-item" to={`user/staff`}> Nhân viên</NavLink>
                         <NavLink className="collapse-item" to={`user/student`}> Sinh viên</NavLink>
 
                     </div>
@@ -54,7 +54,7 @@ const Sidebar = () => {
 
 
             <li className="nav-item">
-                <NavLink className="nav-link collapsed" to={`/manage-borrow`}>
+                <NavLink className="nav-link collapsed" to={`manage-borrow`}>
                     <i className="fa fa-th-large" />
                     <span> Quản lý mượn - trả sách</span>
                 </NavLink>

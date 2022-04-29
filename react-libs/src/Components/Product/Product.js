@@ -12,7 +12,6 @@ export const Product = () => {
 
     const fetchData = async () => {
         const res = await axios.get(`http://localhost/Laravel_/larareact/laravel/api/product`)
-        console.log(res.data.products);
         setProducts(res.data.products)
         setLoading(false);
     }

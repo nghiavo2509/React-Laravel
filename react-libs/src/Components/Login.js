@@ -6,6 +6,7 @@ import swal from "sweetalert";
 const Login = () => {
 
     const navigate = useNavigate();
+
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -31,13 +32,16 @@ const Login = () => {
                         icon: "success",
                         button: "OK!",
                     });
-                    return navigate("/");
+                    return navigate(`/admin`);
                 }
             })
             .catch(error => {
                 if (error.response.status === 422) {
                     setListError(error.response.data.errors);
                 }
+            })
+            .then(function () {
+
             })
     }
     return (

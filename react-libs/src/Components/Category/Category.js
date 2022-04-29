@@ -62,7 +62,7 @@ const Category = () => {
 
         <div className="card shadow mb-4">
             <div className="main_head m-3">
-                <Link to={`/category/create`} className="btn btn-primary text-uppercase">Thêm Danh mục </Link>
+                <Link to={`/admin/category/create`} className="btn btn-primary text-uppercase">Thêm Danh mục </Link>
             </div>
             <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
