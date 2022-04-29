@@ -27,7 +27,7 @@ export const EditCategory = () => {
                             icon: "error",
                             button: "OK!",
                         });
-                        navigate('/category')
+                        navigate('/admin/category')
                     }
                 })
                 .catch(err => {

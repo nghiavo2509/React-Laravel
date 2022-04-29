@@ -26,7 +26,7 @@ export const EditGenre = () => {
                     icon: "error",
                     button: "OK!",
                 });
-                navigate(`/category/items}`)
+                navigate(`/admin/category/items}`)
             }
 
         }

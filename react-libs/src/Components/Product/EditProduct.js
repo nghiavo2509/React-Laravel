@@ -71,7 +71,7 @@ export const EditProduct = () => {
                         button: "OK!",
                     });
                     setTimeout(() => {
-                        navigate('/product')
+                        navigate('/admin/product')
                     }, 1000)
                 } else {
                     swal({

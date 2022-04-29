@@ -10,7 +10,6 @@ export const Borrow = () => {
     useEffect(() => {
         const fetchData = async () => {
             var res = await axios.get(`http://localhost/Laravel_/larareact/laravel/api/borrow`)
-            console.log(res.data.borrows);
             if (res.data.borrows.length > 0) {
                 setItems(res.data.borrows);
                 setLoading(false);

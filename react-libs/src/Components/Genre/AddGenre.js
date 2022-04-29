@@ -18,7 +18,6 @@ export const AddGenre = () => {
         e.preventDefault();
         axios.post(`http://localhost/Laravel_/larareact/laravel/api/genre`, genre)
             .then(res => {
-                console.log(res.data);
                 if (res.data.VALID) {
                     swal({
                         title: "Created!",

@@ -63,7 +63,7 @@ export const EditBorrow = () => {
                         icon: "success",
                         button: "OK!",
                     });
-                    return navigate('/manage-borrow');
+                    return navigate('/admin/manage-borrow');
 
                 } else {
                     setListError({

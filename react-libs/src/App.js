@@ -58,7 +58,6 @@ function App() {
 	});
 
 	const isAuthenticated = localStorage.getItem("auth_token");
-	console.log(isAuthenticated);
 	return (
 		<div className="App">
 			<Router>

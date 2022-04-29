@@ -57,7 +57,6 @@ export const AddProduct = () => {
         setLoading(true);
         axios.post(`http://localhost/Laravel_/larareact/laravel/api/product`, product)
             .then(res => {
-                console.log(res.data);
                 if (res.data.VALID) {
                     swal({
                         title: "Created!",

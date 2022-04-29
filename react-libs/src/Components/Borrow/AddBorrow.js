@@ -30,7 +30,6 @@ export const AddBorrow = () => {
         e.preventDefault();
         axios.post(`http://localhost/Laravel_/larareact/laravel/api/borrow`, info)
             .then(res => {
-                console.log(res);
                 if (res.data.VALID) {
                     swal({
                         title: "Created!",
